@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anoop Vikraman – Senior Frontend, Mobile & Shopify Specialist</title>
+  <meta name="description"
+    content="Portfolio of Anoop Vikraman, Frontend Developer with 3 years of experience specializing in React.js, Next.js, Remix, Shopify Store Creation & Setup, React Native Expo, Keycloak SSO, MSW, Jest, and Java Spring Boot." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind Configuration for Original Surface & Brand Palette -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            },
+            surface: {
+              DEFAULT: '#0f172a',
+              card: '#1e293b',
+              border: '#334155',
+              dark: '#0b0f19',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* ============================================================
+       BRIGHT / LIGHT MODE PURE TEAL, MINT CYAN & WHITE COLOR SCHEME
+       Palette: Pure Snow (#ffffff), Minty Teal Frost (#f0fdfa),
+       Rich Teal (#0d9488 / #0f766e), Cyan Accent (#0284c7),
+       Deep Slate Text (#0f172a / #1e293b)
+       ============================================================ */
+    .light body {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    .light ::-webkit-scrollbar-track {
+      background: #f0fdfa;
+    }
+
+    .light ::-webkit-scrollbar-thumb {
+      background: #99f6e4;
+    }
+
+    .light .bg-surface {
+      background-color: #f8fafc !important;
+    }
+
+    .light .bg-surface-dark {
+      background-color: #f0fdfa !important;
+      border-color: #ccfbf1 !important;
+      color: #0f172a !important;
+    }
+
+    .light .bg-surface-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      color: #0f172a !important;
+      box-shadow: 0 2px 10px -2px rgba(13, 148, 136, 0.05);
+    }
+
+    .light .border-surface-border {
+      border-color: #e2e8f0 !important;
+    }
+
+    /* Text Color Rules */
+    .light .text-slate-200,
+    .light .text-slate-300,
+    .light .text-white {
+      color: #0f172a !important;
+    }
+
+    .light .text-slate-400 {
+      color: #475569 !important;
+    }
+
+    /* Teal & Cyan Accent Text */
+    .light .text-brand-400 {
+      color: #0d9488 !important;
+    }
+
+    /* Headlines Gradient: Deep Teal -> Bright Teal -> Cyan */
+    .light .text-brand-gradient {
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glassmorphism Cards */
+    .light .glass-card {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 4px 20px -2px rgba(13, 148, 136, 0.06) !important;
+    }
+
+    .light .glass-card:hover {
+      border-color: #14b8a6 !important;
+      box-shadow: 0 12px 30px -5px rgba(13, 148, 136, 0.15) !important;
+    }
+
+    /* Primary CTA Buttons */
+    .light .bg-brand-600 {
+      background-color: #0d9488 !important;
+      color: #ffffff !important;
+      box-shadow: 0 8px 20px -4px rgba(13, 148, 136, 0.3) !important;
+    }
+
+    .light .bg-brand-600:hover {
+      background-color: #0f766e !important;
+    }
+
+    /* Status Badges, Logo Icons & Container Overlays */
+    .light .bg-brand-600\/20,
+    .light .bg-brand-500\/10,
+    .light .bg-brand-600\/10 {
+      background-color: #e6fffa !important;
+      border-color: #5eead4 !important;
+      color: #0f766e !important;
+    }
+
+    /* Floating Profile Status Pill on Image */
+    .light .absolute.bottom-4.left-4.right-4 {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      border-color: #99f6e4 !important;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.12) !important;
+    }
+
+    .light .absolute.bottom-4.left-4.right-4 span {
+      color: #0f172a !important;
+    }
+
+    .light .absolute.bottom-4.left-4.right-4 .text-brand-400 {
+      color: #0d9488 !important;
+    }
+
+    /* Location & Availability Badge in Profile Card */
+    .light .p-3\.5.rounded-xl.bg-surface-dark\/80 {
+      background-color: #f0fdfa !important;
+      border-color: #ccfbf1 !important;
+      color: #0f172a !important;
+    }
+
+    .light .p-3\.5.rounded-xl.bg-surface-dark\/80 span {
+      color: #0f172a !important;
+    }
+
+    .light .p-3\.5.rounded-xl.bg-surface-dark\/80 .bg-emerald-500\/10 {
+      background-color: #d1fae5 !important;
+      border-color: #6ee7b7 !important;
+      color: #047857 !important;
+    }
+
+    /* Header Nav */
+    .light header {
+      background-color: rgba(255, 255, 255, 0.92) !important;
+      border-bottom-color: #e2e8f0 !important;
+      backdrop-filter: blur(12px);
+    }
+
+    /* Footer */
+    .light footer {
+      background-color: #f0fdfa !important;
+      border-top-color: #cbd5e1 !important;
+    }
+
+    /* Project Modal Overlay */
+    .light #project-modal {
+      background-color: rgba(15, 23, 42, 0.6) !important;
+    }
+
+    .light #project-modal .glass-card {
+      background: #ffffff !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    /* Skill Filter Tab Buttons */
+    .light .skill-tab-btn:not(.active) {
+      background-color: #ffffff !important;
+      color: #0f766e !important;
+      border: 1px solid #ccfbf1 !important;
+    }
+
+    .light .skill-tab-btn:not(.active):hover {
+      background-color: #f0fdfa !important;
+      color: #0d9488 !important;
+      border-color: #5eead4 !important;
+    }
+
+    .light .skill-tab-btn.active {
+      background-color: #0d9488 !important;
+      color: #ffffff !important;
+    }
+
+    /* Profile Frame Card Glow */
+    .light .profile-glow {
+      box-shadow: 0 10px 35px -5px rgba(13, 148, 136, 0.2) !important;
+      border-color: #5eead4 !important;
+    }
+
+    /* Rich Gradients */
+    .text-brand-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #818cf8 50%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glassmorphism Card Glow */
+    .glass-card {
+      background: rgba(30, 41, 59, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(129, 140, 248, 0.4);
+    }
+
+    /* Spotlight Background Effect */
+    .spotlight {
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.08), transparent 40%);
+    }
+
+    /* Profile Glow */
+    .profile-glow {
+      box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.35);
+    }
+  </style>
+</head>
+
+<body
+  class="bg-surface text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300 min-h-screen relative overflow-x-hidden spotlight"
+  id="app-body">
+
+  <!-- Background Grid Pattern -->
+  <div
+    class="fixed inset-0 bg-[linear-gradient(to_right,#33415515_1px,transparent_1px),linear-gradient(to_bottom,#33415515_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0">
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast"
+    class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 ease-out bg-brand-600 text-white px-5 py-3 rounded-xl shadow-2xl font-mono text-xs font-semibold flex items-center gap-2 border border-brand-400">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-white"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-surface/80 border-b border-surface-border transition-colors">
+    <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div
+          class="w-10 h-10 rounded-xl bg-brand-600/20 border border-brand-500/30 flex items-center justify-center font-mono font-bold text-brand-400 group-hover:border-brand-400 group-hover:bg-brand-600/30 transition-all">
+          &lt;/&gt;
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-white tracking-tight text-base group-hover:text-brand-400 transition-colors">Anoop
+            Vikraman</span>
+          <span class="text-xs font-mono text-slate-400">Frontend, Mobile & Shopify Specialist</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#hero" class="hover:text-brand-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-brand-400 transition-colors">Skills Matrix</a>
+        <a href="#projects" class="hover:text-brand-400 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-brand-400 transition-colors">Contact</a>
+      </div>
+
+      <!-- Theme Switcher & Contact CTA -->
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle"
+          class="p-2.5 rounded-xl bg-surface-card border border-surface-border text-slate-300 hover:text-white hover:border-brand-500/50 transition-all"
+          aria-label="Toggle Theme Mode">
+          <i data-lucide="sun" id="theme-icon-sun" class="w-4 h-4 hidden"></i>
+          <i data-lucide="moon" id="theme-icon-moon" class="w-4 h-4"></i>
+        </button>
+
+        <a href="#contact"
+          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-lg shadow-brand-600/30">
+          <span>Get in Touch</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-6 space-y-32 py-16">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="pt-6 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+      <!-- Left Column: Bio & Introduction -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- Enhanced Status Badge -->
+        <div
+          class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-300 dark:text-brand-300 light:text-brand-700 text-xs font-mono backdrop-blur-md shadow-sm group hover:border-brand-400 transition-all">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+          </span>
+          <span class="font-bold text-slate-100 dark:text-slate-100 light:text-slate-900">3 YOE</span>
+          <span class="text-slate-400 dark:text-slate-400 light:text-slate-500">•</span>
+          <span class="text-brand-400 dark:text-brand-400 light:text-brand-700 font-semibold">Available for Frontend & Full-Stack Opportunities</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+          Architecting resilient <span class="text-brand-gradient">React, Shopify & Mobile</span> systems.
+        </h1>
+
+        <!-- Bio Paragraph -->
+        <p class="text-lg text-slate-300 leading-relaxed font-normal">
+          Frontend Developer with <strong class="text-white font-semibold">3 years of hands-on experience</strong>
+          building production web platforms with <strong class="text-brand-400">React.js, Next.js, Remix</strong>,
+          e-commerce store configuration with <strong class="text-brand-400">Shopify Store Creation & Setup</strong>,
+          cross-platform mobile apps with <strong class="text-brand-400">React Native & Expo</strong>, enterprise
+          security with <strong class="text-brand-400">Keycloak & SSO</strong>, component systems with <strong
+            class="text-brand-400">Storybook</strong>, API mocking with <strong class="text-brand-400">MSW</strong>, and
+          backed by strong Java Spring Boot & relational database knowledge.
+        </p>
+
+        <!-- Core Stack Pills -->
+        <div class="flex flex-wrap gap-2 font-mono text-xs text-slate-300 pt-2">
+          <span class="px-3 py-1.5 rounded-lg bg-surface-card border border-surface-border flex items-center gap-1.5">
+            <i data-lucide="code" class="w-3.5 h-3.5 text-brand-400"></i> React / Next / Remix
+          </span>
+          <span class="px-3 py-1.5 rounded-lg bg-surface-card border border-surface-border flex items-center gap-1.5">
+            <i data-lucide="shopping-bag" class="w-3.5 h-3.5 text-brand-400"></i> Shopify Store Creation & Setup
+          </span>
+          <span class="px-3 py-1.5 rounded-lg bg-surface-card border border-surface-border flex items-center gap-1.5">
+            <i data-lucide="layers" class="w-3.5 h-3.5 text-brand-400"></i> Redux / Context API
+          </span>
+          <span class="px-3 py-1.5 rounded-lg bg-surface-card border border-surface-border flex items-center gap-1.5">
+            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-brand-400"></i> React Native & Expo
+          </span>
+          <span class="px-3 py-1.5 rounded-lg bg-surface-card border border-surface-border flex items-center gap-1.5">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-400"></i> Keycloak SSO Integration
+          </span>
+          <span class="px-3 py-1.5 rounded-lg bg-surface-card border border-surface-border flex items-center gap-1.5">
+            <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-brand-400"></i> MSW & Jest Testing
+          </span>
+          <span class="px-3 py-1.5 rounded-lg bg-surface-card border border-surface-border flex items-center gap-1.5">
+            <i data-lucide="server" class="w-3.5 h-3.5 text-brand-400"></i> Core Java & Spring Boot
+          </span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-4">
+          <a href="#projects"
+            class="px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm transition-all shadow-lg shadow-brand-600/30 flex items-center gap-2">
+            View Featured Work <i data-lucide="arrow-down" class="w-4 h-4"></i>
+          </a>
+          <button onclick="copyEmail()"
+            class="px-5 py-3.5 rounded-xl bg-surface-card border border-surface-border text-slate-300 hover:text-white hover:border-slate-400 transition-all font-mono text-xs flex items-center gap-2">
+            <i data-lucide="copy" class="w-4 h-4 text-brand-400"></i> Copy Email
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Profile Picture Showcase Card -->
+      <div class="lg:col-span-5 flex justify-center lg:justify-end">
+        <div class="relative w-full max-w-md">
+
+          <!-- Background Ambient Glow -->
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-brand-600 to-indigo-400 rounded-3xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000">
+          </div>
+
+          <!-- Profile Picture Frame Card -->
+          <div
+            class="relative glass-card rounded-3xl p-5 border-2 border-brand-500/30 profile-glow space-y-4 text-center overflow-hidden">
+
+            <!-- PROFILE PICTURE CONTAINER -->
+            <div
+              class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-900 border border-surface-border group">
+              <img src="profile.jpg" alt="Anoop Vikraman Profile Photo" id="profile-img"
+                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';" />
+
+              <!-- Overlay Gradient Frame -->
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-80 pointer-events-none">
+              </div>
+
+              <!-- Floating Live Status Badge -->
+              <div
+                class="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-surface-dark/90 backdrop-blur-md border border-surface-border text-xs font-mono text-slate-200">
+                <span class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Anoop Vikraman
+                </span>
+                <span class="text-brand-400 font-bold">3 YOE</span>
+              </div>
+            </div>
+
+            <!-- Profile Info Sub-header -->
+            <div class="space-y-1 text-left px-1">
+              <h3 class="font-bold text-white text-lg flex items-center justify-between">
+                <span>Frontend & Mobile Lead</span>
+                <span
+                  class="text-xs font-mono text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded-full border border-brand-500/20">Fullstack
+                  Ready</span>
+              </h3>
+              <p class="text-xs text-slate-400">Specializing in React.js, Next.js, Remix, Shopify Store Setup, React
+                Native, Keycloak SSO & Java Spring Boot.</p>
+            </div>
+
+            <!-- Location & Availability Info Badge -->
+            <div
+              class="p-3.5 rounded-xl bg-surface-dark/80 border border-surface-border text-left font-mono text-xs text-slate-300 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-brand-400"></i>
+                <span>India &bull; Remote / Hybrid</span>
+              </div>
+              <span
+                class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-semibold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Open to Work
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- TECHNICAL SKILLS MATRIX SECTION -->
+    <section id="skills" class="space-y-6">
+      <div class="space-y-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-brand-400 uppercase tracking-widest">
+            <i data-lucide="terminal" class="w-4 h-4"></i> Technical Capabilities
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Skills & Tech Stack</h2>
+          <p class="text-slate-400 text-sm max-w-2xl">Comprehensive toolkit covering production frontend engineering,
+            Shopify store setup, mobile development, testing infrastructure, and backend fundamentals.</p>
+        </div>
+
+        <!-- Filter Tabs aligned underneath short description to the left -->
+        <div class="flex flex-wrap gap-2 bg-surface-card p-1.5 rounded-xl border border-surface-border max-w-fit">
+          <button onclick="filterSkills('all')"
+            class="skill-tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-brand-600 text-white"
+            data-filter="all">All Skills</button>
+          <button onclick="filterSkills('frontend')"
+            class="skill-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all"
+            data-filter="frontend">Frontend & SSR</button>
+          <button onclick="filterSkills('shopify')"
+            class="skill-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all"
+            data-filter="shopify">Shopify & E-Commerce</button>
+          <button onclick="filterSkills('mobile')"
+            class="skill-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all"
+            data-filter="mobile">Mobile (RN)</button>
+          <button onclick="filterSkills('state-testing')"
+            class="skill-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all"
+            data-filter="state-testing">State, MSW & Jest</button>
+          <button onclick="filterSkills('security')"
+            class="skill-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all"
+            data-filter="security">SSO & Keycloak</button>
+          <button onclick="filterSkills('backend')"
+            class="skill-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all"
+            data-filter="backend">Java & DBs</button>
+        </div>
+      </div>
+
+      <!-- Skills Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="skills-grid">
+
+        <!-- Card 1: React & Next.js -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="frontend">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="atom" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Primary
+              Core</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">React.js & Next.js</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">3 years of production experience building modular
+              component architectures, SSR/SSG workflows, Next App Router, hooks, and performance tuning.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Hooks</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Server
+              Components</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">App
+              Router</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Shopify Store Creation & Setup -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="shopify">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">E-Commerce
+              Setup</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Shopify Store Creation & Setup</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">End-to-end Shopify store creation, theme
+              customization & layout configuration, app ecosystem integration, product catalog management, payment
+              gateway configuration, and launch setup.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Store
+              Creation</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Theme
+              Customization</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">App
+              Integrations</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Catalog
+              & Payment Setup</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Remix -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="frontend">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Fullstack
+              React</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Remix Framework</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Modern web standard loaders, actions, optimistic UI
+              updates, nested routing, and server-driven React architectures.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Loaders
+              & Actions</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Progressive
+              Enhancement</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Redux & Context API -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="state-testing">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">State
+              Management</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Redux Toolkit & Context API</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Complex state slice management, RTK Query data
+              fetching, store hydration, and reactive React Context patterns.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Redux
+              Toolkit</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">RTK
+              Query</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Context
+              Providers</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Storybook -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="frontend">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="book-open" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Design
+              System</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Storybook</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Isolated UI component documentation, story variant
+              testing, controls, and living design system catalogs.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Component
+              Driven</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">CSF
+              3 Story Format</span>
+          </div>
+        </div>
+
+        <!-- Card 6: MSW & Jest -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="state-testing">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="check-square" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Testing
+              & Mocking</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">MSW & Jest</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Mock Service Worker for seamless network API mocking,
+              unit testing with Jest, React Testing Library, and integration workflows.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Mock
+              Service Worker</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Jest
+              Assertions</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">RTL</span>
+          </div>
+        </div>
+
+        <!-- Card 7: Keycloak & SSO Integration -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="security">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="shield" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Enterprise
+              Auth</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Keycloak & SSO Integration</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Identity management, OAuth2 / OIDC flows, JWT access
+              token handling, PKCE authentication, single sign-on security in React & web apps.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">OAuth2
+              / OIDC</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">JWT
+              Tokens</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Realm
+              Config</span>
+          </div>
+        </div>
+
+        <!-- Card 8: React Native & Expo -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="mobile">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="smartphone" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Cross-Platform</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">React Native & Expo</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Building native iOS & Android mobile applications
+              with React Native, Expo Router, device hardware integrations, and native performance.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">React
+              Native</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Expo
+              Go & EAS</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">iOS
+              & Android</span>
+          </div>
+        </div>
+
+        <!-- Card 9: Core Java & Spring Boot -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="backend">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="coffee" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Backend
+              Foundation</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Core Java & Spring Boot</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Solid learned foundation in Core Java, Spring MVC,
+              Spring Boot REST controllers, dependency injection, JPA, and Hibernate ORM.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Spring
+              MVC</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">JPA
+              / Hibernate</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">REST
+              APIs</span>
+          </div>
+        </div>
+
+        <!-- Card 10: PostgreSQL & MySQL -->
+        <div class="skill-card glass-card p-6 rounded-2xl space-y-4" data-category="backend">
+          <div class="flex items-center justify-between">
+            <div
+              class="w-10 h-10 rounded-xl bg-brand-600/10 border border-brand-500/20 flex items-center justify-center text-brand-400">
+              <i data-lucide="database" class="w-5 h-5"></i>
+            </div>
+            <span
+              class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Databases</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">PostgreSQL & MySQL</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Relational database design, SQL querying, indexing,
+              foreign keys, and integration with Hibernate JPA ORM layers.</p>
+          </div>
+          <div class="pt-2 border-t border-surface-border flex flex-wrap gap-1.5">
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">PostgreSQL</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">MySQL</span>
+            <span
+              class="px-2 py-0.5 rounded bg-surface-dark text-slate-300 text-[11px] font-mono border border-surface-border">Schema
+              Design</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FEATURED PROJECTS SHOWCASE -->
+    <section id="projects" class="space-y-10">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-brand-400 uppercase tracking-widest">
+          <i data-lucide="folder-git-2" class="w-4 h-4"></i> Production Case Studies
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Featured Projects</h2>
+        <p class="text-slate-400 text-sm max-w-xl">Highlights of production frontend web platforms, Shopify store
+          builds, React Native mobile apps, and enterprise security integrations.</p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Project 1: Shopify Store Creation & Setup -->
+        <div class="glass-card rounded-2xl p-8 space-y-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span
+                class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Shopify
+                E-Commerce</span>
+              <span class="text-xs font-mono text-slate-400">Store Creation & Setup</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors">Shopify E-Commerce
+              Store Creation & Setup</h3>
+
+            <p class="text-slate-300 text-sm leading-relaxed">
+              End-to-end Shopify store setup including theme layout customization, app ecosystem integration, product
+              catalog structure, payment gateway configuration, and launch readiness.
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Store
+                Creation</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Theme
+                Customization</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">App
+                Ecosystem</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Catalog &
+                Payment Setup</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-surface-border flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Role: Shopify Setup Specialist</span>
+            <button onclick="showProjectDetails('shopify')"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-400 hover:text-brand-300 transition-colors">
+              View Setup Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2: Enterprise SSO & Micro-Frontend Hub -->
+        <div class="glass-card rounded-2xl p-8 space-y-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span
+                class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Web
+                & Security</span>
+              <span class="text-xs font-mono text-slate-400">3 YOE Frontend Work</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors">Enterprise
+              Micro-Frontend Platform & Keycloak SSO</h3>
+
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Architected a modular enterprise portal with single sign-on security via Keycloak OIDC/OAuth2. Built
+              scalable component suites using Storybook, managed state with Redux Toolkit, and achieved 100% testing
+              with MSW and Jest.
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+              <span
+                class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">React.js</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Redux
+                Toolkit</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Keycloak
+                / SSO</span>
+              <span
+                class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Storybook</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">MSW &
+                Jest</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-surface-border flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Role: Senior Frontend Engineer</span>
+            <button onclick="showProjectDetails('sso')"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-400 hover:text-brand-300 transition-colors">
+              View Architecture Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3: React Native Expo Mobile App -->
+        <div class="glass-card rounded-2xl p-8 space-y-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span
+                class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Mobile
+                Engineering</span>
+              <span class="text-xs font-mono text-slate-400">iOS & Android</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors">Cross-Platform
+              Logistics Mobile App</h3>
+
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Designed and deployed a high-performance cross-platform mobile application using React Native and Expo.
+              Implemented offline data caching, smooth gestures, native device hardware API integrations, and Context
+              API state management.
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">React
+                Native</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">React
+                Native Expo</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Context
+                API</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Offline
+                Caching</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-surface-border flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Role: Mobile & Frontend Developer</span>
+            <button onclick="showProjectDetails('mobile')"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-400 hover:text-brand-300 transition-colors">
+              View Mobile Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 4: Next.js & Remix SSR Storefront -->
+        <div class="glass-card rounded-2xl p-8 space-y-6 flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span
+                class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-mono border border-brand-500/20">Next
+                & Remix SSR</span>
+              <span class="text-xs font-mono text-slate-400">Fullstack Web</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-white group-hover:text-brand-400 transition-colors">High-Performance SSR
+              E-Commerce Storefront</h3>
+
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Engineered a fast headless storefront utilizing Next.js Server Components and Remix loaders/actions.
+              Created a reusable component design library documented in Storybook with unit tests written in Jest.
+            </p>
+
+            <div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+              <span
+                class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Next.js</span>
+              <span
+                class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Remix</span>
+              <span
+                class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Storybook</span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-dark text-slate-300 border border-surface-border">Tailwind
+                CSS</span>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-surface-border flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Role: Frontend Specialist</span>
+            <button onclick="showProjectDetails('ssr')"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-400 hover:text-brand-300 transition-colors">
+              View Design System Specs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CONTACT & FOOTER SECTION -->
+    <section id="contact"
+      class="glass-card rounded-3xl p-8 sm:p-12 border border-surface-border text-center space-y-8 relative overflow-hidden">
+
+      <!-- Background Ambient Glow -->
+      <div class="absolute inset-0 bg-radial-gradient from-brand-600/20 to-transparent pointer-events-none"></div>
+
+      <div class="max-w-2xl mx-auto space-y-4 relative z-10">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-brand-400 uppercase tracking-widest">
+          <i data-lucide="mail" class="w-4 h-4"></i> Direct Contact
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Let's build something exceptional
+          together.</h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Whether you need a Senior Frontend Developer specializing in React/Next.js/Remix, Shopify store creation and
+          configuration, a cross-platform React Native developer, or an enterprise full-stack developer with Java Spring
+          Boot knowledge—my inbox is open.
+        </p>
+      </div>
+
+      <!-- Action Box -->
+      <div class="flex flex-wrap items-center justify-center gap-4 relative z-10 pt-4">
+        <a href="mailto:anoopthmax@gmail.com"
+          class="px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm transition-all shadow-lg shadow-brand-600/30 flex items-center gap-2">
+          <i data-lucide="send" class="w-4 h-4"></i> Send Direct Email
+        </a>
+
+        <button onclick="copyEmail()"
+          class="px-6 py-4 rounded-xl bg-surface-card border border-surface-border text-slate-200 hover:border-brand-400 font-semibold text-sm transition-all flex items-center gap-2 font-mono">
+          <i data-lucide="copy" class="w-4 h-4 text-brand-400"></i> anoopthmax@gmail.com
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MULTI-COLUMN ENHANCED FOOTER -->
+  <footer class="border-t border-surface-border pt-16 pb-12 text-xs text-slate-400 relative z-10 bg-surface-dark/90">
+    <div class="max-w-7xl mx-auto px-6 space-y-12">
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
+        <!-- Column 1: Brand Info & Bio -->
+        <div class="md:col-span-5 space-y-4">
+          <a href="#hero" class="flex items-center gap-3 group">
+            <div
+              class="w-9 h-9 rounded-xl bg-brand-600/20 border border-brand-500/30 flex items-center justify-center font-mono font-bold text-brand-400 group-hover:border-brand-400 group-hover:bg-brand-600/30 transition-all">
+              &lt;/&gt;
+            </div>
+            <span class="font-bold text-white tracking-tight text-base group-hover:text-brand-400 transition-colors">Anoop
+              Vikraman</span>
+          </a>
+          <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+            Frontend Developer with 3 YOE specializing in React.js, Next.js, Remix, Shopify Store Creation & Setup, React Native Expo, Keycloak SSO, MSW, Jest, and Java Spring Boot.
+          </p>
+          <div class="flex items-center gap-2 font-mono text-[11px] text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>India &bull; Available for Remote & Hybrid Work</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider font-mono">Navigation</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#hero" class="hover:text-brand-400 transition-colors">About & Bio</a></li>
+            <li><a href="#skills" class="hover:text-brand-400 transition-colors">Skills Matrix</a></li>
+            <li><a href="#projects" class="hover:text-brand-400 transition-colors">Featured Projects</a></li>
+            <li><a href="#contact" class="hover:text-brand-400 transition-colors">Get in Touch</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Specializations -->
+        <div class="md:col-span-4 space-y-3">
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider font-mono">Specializations</h4>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+            <span class="px-2.5 py-1 rounded-md bg-surface-card border border-surface-border text-slate-300">React.js & Next.js</span>
+            <span class="px-2.5 py-1 rounded-md bg-surface-card border border-surface-border text-slate-300">Shopify Setup</span>
+            <span class="px-2.5 py-1 rounded-md bg-surface-card border border-surface-border text-slate-300">React Native Expo</span>
+            <span class="px-2.5 py-1 rounded-md bg-surface-card border border-surface-border text-slate-300">Keycloak SSO</span>
+            <span class="px-2.5 py-1 rounded-md bg-surface-card border border-surface-border text-slate-300">MSW & Jest</span>
+            <span class="px-2.5 py-1 rounded-md bg-surface-card border border-surface-border text-slate-300">Java Spring Boot</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row Bar -->
+      <div class="pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px]">
+        <p class="text-slate-400">&copy; 2026 Anoop Vikraman. All rights reserved.</p>
+
+        <div class="flex items-center gap-6 text-slate-400">
+          <a href="mailto:anoopthmax@gmail.com" class="hover:text-brand-400 transition-colors flex items-center gap-1.5">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-brand-400"></i> anoopthmax@gmail.com
+          </a>
+          <a href="#hero" class="hover:text-brand-400 transition-colors flex items-center gap-1">
+            Back to top <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAILS MODAL -->
+  <div id="project-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-surface-dark/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div
+      class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 space-y-6 border border-surface-border shadow-2xl relative">
+      <button onclick="closeProjectModal()"
+        class="absolute top-6 right-6 p-2 rounded-xl bg-surface-card border border-surface-border text-slate-400 hover:text-white transition-all">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="space-y-2">
+        <span class="text-xs font-mono text-brand-400 uppercase tracking-wider" id="modal-category">Project
+          Category</span>
+        <h3 class="text-2xl font-bold text-white" id="modal-title">Project Title</h3>
+      </div>
+
+      <p class="text-sm text-slate-300 leading-relaxed" id="modal-desc">Detailed project breakdown content.</p>
+
+      <div class="space-y-2">
+        <h4 class="text-xs font-mono font-bold text-white uppercase">Key Setup Highlights:</h4>
+        <ul class="text-xs text-slate-400 space-y-1.5 list-disc pl-4" id="modal-highlights">
+          <li>Highlight 1</li>
+        </ul>
+      </div>
+
+      <div class="pt-4 border-t border-surface-border flex justify-end">
+        <button onclick="closeProjectModal()"
+          class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs font-mono transition-all">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JAVASCRIPT FOR INTERACTION -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Spotlight Cursor Movement
+    document.addEventListener('mousemove', (e) => {
+      const body = document.getElementById('app-body');
+      body.style.setProperty('--mouse-x', `${e.clientX}px`);
+      body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
+
+    // Theme Toggle (Dark / Light Surface Mode)
+    const themeBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    const htmlEl = document.documentElement;
+
+    themeBtn.addEventListener('click', () => {
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        htmlEl.classList.add('light');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlEl.classList.remove('light');
+        htmlEl.classList.add('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    });
+
+    // Toast Notification for Copying Email
+    function copyEmail() {
+      const email = 'anoopthmax@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast(`Copied email (${email}) to clipboard!`);
+      }).catch(() => {
+        showToast(`Email: ${email}`);
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Skills Filter Logic
+    function filterSkills(category) {
+      const tabs = document.querySelectorAll('.skill-tab-btn');
+      tabs.forEach(tab => {
+        if (tab.dataset.filter === category) {
+          tab.className = 'skill-tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-brand-600 text-white';
+        } else {
+          tab.className = 'skill-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition-all';
+        }
+      });
+
+      const cards = document.querySelectorAll('.skill-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+          card.style.flexDirection = 'column';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Project Details Modal Data & Handlers
+    const projectData = {
+      shopify: {
+        category: 'Shopify Store Setup',
+        title: 'Shopify E-Commerce Store Creation & Setup',
+        desc: 'End-to-end Shopify store creation, theme customization & layout configuration, app ecosystem integration, payment gateway & tax setup, and product catalog management.',
+        highlights: [
+          'End-to-end store creation, layout design customization, and section configuration',
+          'Shopify App Ecosystem setup (reviews, inventory, marketing, and customer communication)',
+          'Payment gateway integration, shipping rate configuration, and domain DNS setup',
+          'Product catalog structuring, variant setup, collection organization, and SEO navigation'
+        ]
+      },
+      sso: {
+        category: 'Frontend & Enterprise Auth',
+        title: 'Enterprise Micro-Frontend Platform & Keycloak SSO',
+        desc: 'Built for high-security enterprise environments using React.js and Redux. Integrated single sign-on (SSO) authentication powered by Keycloak OAuth2/OIDC, isolated UI development using Storybook, and API mocking with MSW and Jest.',
+        highlights: [
+          'Keycloak OIDC & OAuth2 authentication code flow integration with PKCE',
+          'Storybook component catalog for atomic design system isolation',
+          'Mock Service Worker (MSW) setup for seamless API mocking during unit & integration testing with Jest',
+          'Redux Toolkit slice architecture for central security token state handling'
+        ]
+      },
+      mobile: {
+        category: 'Cross-Platform Mobile',
+        title: 'Cross-Platform Logistics Mobile App',
+        desc: 'Developed with React Native and React Native Expo for iOS and Android. Features native device API integrations, offline storage state synchronization, and fast navigation via Expo Router.',
+        highlights: [
+          'Unified single codebase for iOS and Android with React Native Expo',
+          'Offline-first architecture utilizing AsyncStorage and Context API state management',
+          '60 FPS smooth gestures and responsive touch interfaces',
+          'Automated build pipelines using Expo Application Services (EAS)'
+        ]
+      },
+      ssr: {
+        category: 'Fullstack React SSR',
+        title: 'High-Performance SSR E-Commerce Storefront',
+        desc: 'Fullstack React storefront built with Next.js Server Components and Remix loaders/actions. Optimized for core web vitals, progressive enhancement, and fast server rendering.',
+        highlights: [
+          'Next.js App Router and Remix nested route data fetching',
+          'Tailwind CSS customized design system documented in Storybook',
+          'Zero-JS hydration fallbacks for critical checkout user flows'
+        ]
+      },
+      java: {
+        category: 'Backend Foundation & DBs',
+        title: 'Java Spring Boot Enterprise REST Service',
+        desc: 'Backend service architecture built with Core Java, Spring MVC, Spring Boot, JPA, and Hibernate. Integrated with PostgreSQL and MySQL relational databases.',
+        highlights: [
+          'RESTful API controller mapping and request validation',
+          'Hibernate JPA entity relationships and transaction management',
+          'PostgreSQL & MySQL schema design and query execution'
+        ]
+      }
+    };
+
+    function showProjectDetails(id) {
+      const data = projectData[id];
+      if (!data) return;
+
+      document.getElementById('modal-category').textContent = data.category;
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-desc').textContent = data.desc;
+
+      const highlightsList = document.getElementById('modal-highlights');
+      highlightsList.innerHTML = data.highlights.map(item => `<li>${item}</li>`).join('');
+
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+  </script>
+</body>
+
+</html>
